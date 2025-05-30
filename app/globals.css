@@ -1,0 +1,713 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+    --primary: 47 55% 60%;
+    --primary-foreground: 0 0% 0%;
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 221.2 83.2% 53.3%;
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 222.2 47.4% 11.2%;
+    --foreground: 210 40% 98%;
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 47 55% 60%;
+    --primary-foreground: 0 0% 0%;
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 224.3 76.3% 48%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply text-foreground;
+  }
+
+  /* Estilos específicos para light mode (azul escuro) */
+  body {
+    background-color: #091428;
+    background-image: linear-gradient(to bottom, #091428, #0a1428);
+    color: #f0e6d2;
+  }
+
+  /* Estilos específicos para dark mode (cinza escuro) */
+  .dark body {
+    background-color: #121212;
+    background-image: linear-gradient(to bottom, #121212, #1a1a1a);
+    color: #f0e6d2;
+  }
+}
+
+@font-face {
+  font-family: "Cyber";
+  src: url("/fonts/Orbitron-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Cyber";
+  src: url("/fonts/Orbitron-Bold.ttf") format("truetype");
+  font-weight: bold;
+  font-style: normal;
+}
+
+.font-cyber {
+  font-family: "Orbitron", sans-serif;
+  letter-spacing: 0.05em;
+}
+
+/* Input focus styles */
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none !important;
+  border-color: #c8aa6e !important;
+  box-shadow: 0 0 0 2px rgba(200, 170, 110, 0.25) !important;
+}
+
+/* Header link styles */
+.header-link {
+  position: relative;
+  color: #c8aa6e !important;
+  text-transform: uppercase;
+  font-weight: bold;
+  transition: all 0.3s;
+  overflow: hidden;
+}
+
+.header-link::before {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #c8aa6e, transparent);
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+.header-link:hover::before {
+  transform: scaleX(1);
+}
+
+.header-link.active::before {
+  transform: scaleX(1);
+  background: #c8aa6e;
+}
+
+/* Language selector styles */
+.language-selector {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+  border: none !important;
+  background: transparent;
+  color: #c8aa6e;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.language-selector:hover {
+  background: rgba(200, 170, 110, 0.1);
+}
+
+.language-selector-dropdown {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  margin-top: 0.25rem;
+  background: #0a1428;
+  border: 1px solid #785a28;
+  border-radius: 0.25rem;
+  overflow: hidden;
+  z-index: 50;
+}
+
+.dark .language-selector-dropdown {
+  background: #1a1a1a;
+}
+
+.language-option {
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  transition: all 0.3s;
+  color: #c8aa6e;
+}
+
+.language-option:hover {
+  background: rgba(200, 170, 110, 0.1);
+}
+
+.language-option.active {
+  background: rgba(200, 170, 110, 0.2);
+}
+
+/* Hover effects for carousel images */
+.carousel-item {
+  overflow: hidden;
+}
+
+.carousel-item img {
+  transition: transform 0.5s ease;
+}
+
+.carousel-item:hover img {
+  transform: scale(1.05);
+}
+
+/* Hextech gold button styles */
+.hextech-button {
+  position: relative;
+  border: 1px solid #c8aa6e !important;
+  background: linear-gradient(to bottom, #1e2328, #091428) !important;
+  color: #c8aa6e !important;
+  text-transform: uppercase;
+  font-weight: bold;
+  transition: all 0.3s;
+  overflow: hidden;
+}
+
+.dark .hextech-button {
+  background: linear-gradient(to bottom, #1e2328, #121212) !important;
+}
+
+.hextech-button::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(45deg, transparent, #c8aa6e, transparent);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.hextech-button:hover::before {
+  opacity: 0.2;
+}
+
+.hextech-button:hover {
+  box-shadow: 0 0 10px rgba(200, 170, 110, 0.5);
+}
+
+/* Champion details decoration */
+.champion-detail-header {
+  position: relative;
+}
+
+.champion-detail-header::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: -20px;
+  width: 10px;
+  height: 2px;
+  background-color: #c8aa6e;
+}
+
+.champion-detail-header::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: -20px;
+  width: 10px;
+  height: 2px;
+  background-color: #c8aa6e;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  background-color: #091428;
+}
+
+.dark ::-webkit-scrollbar {
+  background-color: #121212;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #785a28;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #c8aa6e;
+}
+
+/* Hide scrollbar for carousel */
+.scrollbar-hide {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none; /* Chrome, Safari and Opera */
+}
+
+/* Dark mode specific styles */
+.dark .header-link {
+  color: #c8aa6e !important;
+}
+
+.dark .language-selector {
+  border-color: #785a28;
+  color: #c8aa6e;
+}
+
+.dark .text-[#A09B8C] {
+  color: #a09b8c;
+}
+
+.dark .text-[#C8AA6E] {
+  color: #c8aa6e;
+}
+
+.dark .bg-[#0A1428] {
+  background-color: #1a1a1a !important;
+}
+
+.dark .bg-[#091428] {
+  background-color: #121212 !important;
+}
+
+.dark .border-[#785A28] {
+  border-color: #785a28;
+}
+
+.dark .from-[#091428] {
+  --tw-gradient-from: #121212 var(--tw-gradient-from-position) !important;
+}
+
+.dark .via-[#0A1428] {
+  --tw-gradient-via: #1a1a1a var(--tw-gradient-via-position) !important;
+}
+
+.dark .to-[#091428] {
+  --tw-gradient-to: #121212 var(--tw-gradient-to-position) !important;
+}
+
+.dark .from-[#0A1428] {
+  --tw-gradient-from: #1a1a1a var(--tw-gradient-from-position) !important;
+}
+
+.dark .to-[#0A1428] {
+  --tw-gradient-to: #1a1a1a var(--tw-gradient-to-position) !important;
+}
+
+/* Garantir que o footer mantenha a cor correta */
+.dark footer {
+  background-color: #121212 !important;
+}
+
+.light footer {
+  background-color: #091428 !important;
+}
+
+/* Garantir que não haja transição de cores estranhas */
+.dark .bg-gradient-to-t {
+  --tw-gradient-stops: var(--tw-gradient-from), transparent !important;
+}
+
+.light .bg-gradient-to-t {
+  --tw-gradient-stops: var(--tw-gradient-from), transparent !important;
+}
+
+/* Forçar cores corretas para inputs e botões */
+.dark input,
+.dark button,
+.dark select,
+.dark textarea {
+  background-color: #1a1a1a !important;
+}
+
+.light input,
+.light button,
+.light select,
+.light textarea {
+  background-color: #091428 !important;
+}
+
+/* Exceção para botões com cores específicas */
+.dark
+  button.bg-[#C8AA6E],
+.light button.bg-[#C8AA6E] {
+  background-color: #c8aa6e !important;
+}
+
+/* Garantir que todos os textos em botões e inputs sejam dourados */
+button,
+input,
+select,
+textarea,
+.dropdown-item {
+  color: #c8aa6e !important;
+}
+
+/* 3D card effect */
+.card-3d {
+  transform-style: preserve-3d;
+  transform: perspective(1000px);
+  transition: transform 0.1s ease-out;
+}
+
+.card-3d-content {
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+}
+
+.card-3d-shine {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(
+    circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+    rgba(255, 255, 255, 0.1) 0%,
+    rgba(255, 255, 255, 0) 80%
+  );
+  opacity: 0;
+  transition: opacity 0.3s;
+  pointer-events: none;
+}
+
+.card-3d:hover .card-3d-shine {
+  opacity: 1;
+}
+
+/* Carousel styling fixes */
+.carousel-container {
+  border-radius: 0.5rem;
+  overflow: hidden;
+}
+
+.carousel-corner {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.carousel-corner-tl {
+  top: 0;
+  left: 0;
+  border-top: 2px solid #c8aa6e;
+  border-left: 2px solid #c8aa6e;
+}
+
+.carousel-corner-tr {
+  top: 0;
+  right: 0;
+  border-top: 2px solid #c8aa6e;
+  border-right: 2px solid #c8aa6e;
+}
+
+.carousel-corner-bl {
+  bottom: 0;
+  left: 0;
+  border-bottom: 2px solid #c8aa6e;
+  border-left: 2px solid #c8aa6e;
+}
+
+.carousel-corner-br {
+  bottom: 0;
+  right: 0;
+  border-bottom: 2px solid #c8aa6e;
+  border-right: 2px solid #c8aa6e;
+}
+
+/* Dark/Light mode transition */
+.dark,
+.light,
+.dark *,
+.light * {
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+/* Garantir que os botões e dropdowns tenham cores consistentes */
+.dark
+  button.bg-[#0A1428],
+.dark button.bg-[#091428] {
+  background-color: #1a1a1a !important;
+}
+
+.dark
+  div.bg-[#0A1428],
+.dark div.bg-[#091428] {
+  background-color: #1a1a1a !important;
+}
+
+.dark
+  .hover\:bg-[#0A1428]:hover,
+.dark .hover\:bg-[#091428]:hover {
+  background-color: #1a1a1a !important;
+}
+
+.dark
+  .focus\:bg-[#0A1428]:focus,
+.dark .focus\:bg-[#091428]:focus {
+  background-color: #1a1a1a !important;
+}
+
+/* Garantir que não haja transições estranhas entre o conteúdo e o footer */
+body::after {
+  content: "";
+  display: block;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100px;
+  z-index: -1;
+  background: linear-gradient(to bottom, transparent, #c8aa6e);
+  opacity: 0.1;
+  pointer-events: none;
+}
+
+.dark body::after {
+  background: linear-gradient(to bottom, transparent, #c8aa6e);
+  opacity: 0.05;
+}
+
+.light body::after {
+  background: linear-gradient(to bottom, transparent, #c8aa6e);
+  opacity: 0.1;
+}
+
+/* Garantir que todos os botões tenham o mesmo estilo */
+button {
+  position: relative;
+  border: 1px solid #c8aa6e !important;
+  color: #c8aa6e !important;
+  text-transform: uppercase;
+  font-weight: bold;
+  transition: all 0.3s;
+  overflow: hidden;
+}
+
+button::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(45deg, transparent, #c8aa6e, transparent);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+button:hover::before {
+  opacity: 0.2;
+}
+
+button:hover {
+  box-shadow: 0 0 10px rgba(200, 170, 110, 0.5);
+}
+
+/* Garantir que todos os dropdowns tenham texto dourado */
+.dropdown-menu-content * {
+  color: #c8aa6e !important;
+}
+
+/* Corrigir o header no light mode */
+header {
+  background-color: #091428 !important;
+}
+
+.dark header {
+  background-color: #121212 !important;
+}
+
+/* Corrigir a página de campeões no dark mode */
+.dark .min-h-screen.bg-gradient-to-b.from-background.via-background\/95.to-background\/90 {
+  background: linear-gradient(to bottom, #121212, #1a1a1a) !important;
+}
+
+/* Corrigir o forum */
+.dark .min-h-screen.bg-gradient-to-b.from-background.via-background\/95.to-background\/90,
+.light .min-h-screen.bg-gradient-to-b.from-background.via-background\/95.to-background\/90 {
+  background: linear-gradient(to bottom, var(--tw-gradient-from), var(--tw-gradient-to)) !important;
+}
+
+.dark .min-h-screen.bg-gradient-to-b.from-background.via-background\/95.to-background\/90 {
+  --tw-gradient-from: #121212 !important;
+  --tw-gradient-to: #1a1a1a !important;
+}
+
+.light .min-h-screen.bg-gradient-to-b.from-background.via-background\/95.to-background\/90 {
+  --tw-gradient-from: #091428 !important;
+  --tw-gradient-to: #0a1428 !important;
+}
+
+/* Corrigir cores de texto em todos os lugares */
+* {
+  color: #c8aa6e !important;
+}
+
+p,
+span,
+div {
+  color: #a09b8c !important;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+button,
+a {
+  color: #c8aa6e !important;
+}
+
+/* Garantir que o header tenha a cor correta no light mode */
+header {
+  background-color: transparent !important;
+}
+
+.light header.sticky.top-0.z-50.w-full.transition-all.duration-300 {
+  background-color: #091428 !important;
+}
+
+.dark header.sticky.top-0.z-50.w-full.transition-all.duration-300 {
+  background-color: #121212 !important;
+}
+
+/* Remover bordas de botões específicos */
+.header-link,
+button[aria-label="Toggle theme"],
+a[href="/"].mb-2.inline-flex.items-center.text-sm,
+button.mb-4.inline-flex.items-center.text-sm {
+  border: none !important;
+  box-shadow: none !important;
+}
+
+/* Garantir que a página de campeões tenha o fundo correto */
+.light .min-h-screen {
+  background: linear-gradient(to bottom, #091428, #0a1428) !important;
+}
+
+.dark .min-h-screen {
+  background: linear-gradient(to bottom, #121212, #1a1a1a) !important;
+}
+
+/* Adicionar um sutil gradiente dourado na parte superior da página de campeões */
+.light .min-h-screen::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #c8aa6e, transparent);
+  opacity: 0.5;
+}
+
+/* Forçar o header a manter a cor correta quando rolar */
+header.sticky.top-0.z-50.w-full.transition-all.duration-300 {
+  background-color: #091428 !important;
+}
+
+.dark header.sticky.top-0.z-50.w-full.transition-all.duration-300 {
+  background-color: #121212 !important;
+}
+
+/* Remover bordas do botão de tema */
+button[aria-label="Toggle theme"],
+.theme-toggle-button {
+  border: none !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+/* Garantir que o botão de tema não tenha bordas */
+.theme-toggle-button,
+button[aria-label="Toggle theme"],
+button.theme-toggle {
+  border: none !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+/* Remover bordas de todos os botões no header */
+header button {
+  border: none !important;
+}
+
+/* Forçar o header a manter a cor correta quando rolar */
+header.sticky.top-0.z-50.w-full {
+  background-color: #091428 !important;
+}
+
+.dark header.sticky.top-0.z-50.w-full {
+  background-color: #121212 !important;
+}
+
+/* Forçar o header a manter a cor correta quando rolar */
+header.sticky {
+  background-color: #091428 !important;
+}
+
+.dark header.sticky {
+  background-color: #121212 !important;
+}
+
+/* Forçar o header a manter a cor correta quando rolar */
+.light header {
+  background-color: #091428 !important;
+}
+
+.dark header {
+  background-color: #121212 !important;
+}
+
+/* Forçar o header a manter a cor correta quando rolar */
+header {
+  background-color: #091428 !important;
+}
+
+.dark header {
+  background-color: #121212 !important;
+}
+
+/* Perspective for 3D card effects */
+.perspective-500 {
+  perspective: 500px;
+}
