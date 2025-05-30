@@ -25,7 +25,7 @@ export default function ForumPage() {
         }
       `}</style>
 
-      <div className="container mx-auto px-4 py-8">
+      <div className="max-w-[1200px] mx-auto px-4 py-8">
         <div className="mb-8">
           <Link
             href="/"
