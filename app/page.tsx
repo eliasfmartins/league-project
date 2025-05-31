@@ -34,7 +34,7 @@ export default async function Home() {
         <section className="mb-16">
           <div className="mb-8 flex flex-col items-center justify-between gap-4 md:flex-row">
             <div className="relative">
-              <h2 className="font-cyber text-3xl font-bold tracking-tight text-[#C8AA6E] md:text-4xl">
+              <h2 className="font-cyber text-3xl font-bold tracking-tight text-[#C8AA6E] md:text-4xl text-center">
                 TOP CHAMPIONS BY ROLE
               </h2>
               <div className="absolute -bottom-2 left-0 h-0.5 w-24 bg-[#785A28]"></div>
@@ -49,12 +49,12 @@ export default async function Home() {
         </section>
 
         <section className="mb-16">
-          <div className="mb-8 flex items-center justify-between">
+          <div className="mb-8 flex items-center justify-between flex-col sm:flex-row gap-8">
             <div className="relative">
-              <h2 className="font-cyber text-3xl font-bold tracking-tight text-[#C8AA6E] md:text-4xl">
+              <h2 className="font-cyber text-3xl font-bold tracking-tight text-[#C8AA6E] md:text-4xl text-center">
                 CHAMPION ROSTER
               </h2>
-              <div className="absolute -bottom-2 left-0 h-0.5 w-24 bg-[#785A28]"></div>
+              <div className="absolute -bottom-2 left-0 h-0.5 w-24 bg-[#785A28] mx-auto"></div>
             </div>
             <Link href="/champions">
               <Button variant="outline" className="hextech-button group">

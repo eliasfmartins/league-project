@@ -19,7 +19,7 @@ const ALL_FEATURED = Object.values(featuredChampions).flat()
 export default function FeaturedCarousel() {
   const [isPaused, setIsPaused] = useState(false)
   const [activeIndex, setActiveIndex] = useState(0)
-  const [imageHeight, setImageHeight] = useState("md:h-[550px] h-[450px]") // Aumentei a altura para mostrar mais do campeão
+  const [imageHeight, setImageHeight] = useState("md:h-[550px] h-[450px]") 
   const carouselRef = useRef<HTMLDivElement>(null)
   const controls = useAnimation()
   const [isLoaded, setIsLoaded] = useState(false)
@@ -48,12 +48,10 @@ export default function FeaturedCarousel() {
             role: ["TOP", "JUNGLE", "MID", "ADC", "SUPPORT"][Math.floor(Math.random() * 5)],
           }))
 
-          // Sort by win rate (descending)
           withWinRates.sort(
             (a, b) => Number.parseFloat(b.winRate.replace("%", "")) - Number.parseFloat(a.winRate.replace("%", "")),
           )
 
-          // Get top champions for each role
           const topByRole: Record<string, any[]> = {
             TOP: [],
             JUNGLE: [],
@@ -68,7 +66,6 @@ export default function FeaturedCarousel() {
             }
           })
 
-          // Flatten for carousel
           const featuredChamps = Object.values(topByRole).flat()
           setChampions(featuredChamps.length > 0 ? featuredChamps : ALL_FEATURED)
         }
